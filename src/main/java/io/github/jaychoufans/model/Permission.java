@@ -1,0 +1,44 @@
+package io.github.jaychoufans.model;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Permission {
+
+	private Integer permissionId;
+
+	private String permissionName;
+
+	private String permissionUrl;
+
+	private Integer permissionParentId;
+
+	private String permissionIcon;
+
+	@JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date permissionCreateTime;
+
+	@JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date permissionLastModifyTime;
+
+	// 不对应数据库字段
+	private boolean open = true;
+
+	// 不对应数据库字段
+	private boolean checked = false;
+
+	// 不对应数据库字段
+	private List<Permission> children = new ArrayList<>();
+
+	// 不对应数据库字段(easy-ui tree grid)
+	private Integer _parentId;
+
+}
